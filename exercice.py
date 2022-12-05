@@ -4,7 +4,8 @@
 
 # TODO: Importez vos modules ici
 import numpy as np
-
+import matplotlib as plt
+import math
 
 
 
@@ -17,16 +18,15 @@ def linear_values() -> np.ndarray:
 def coordinate_conversion(cartesian_coordinates: np.ndarray) -> np.ndarray:
 
     polar = []
-    cartesian_coordinates = np.array([(0, 0), (10, 10), (2, -1)])
+    #cartesian_coordinates = np.array([(0, 0), (10, 10), (2, -1)])
 
     for i in cartesian_coordinates:
-        for j in i:
-            r = np.sqrt(j[0] ** 2 + j[1] ** 2)
-            teta= np.arctan2(j[1],j[0])
-            polar.append((r, teta))
-    print(polar)
+        r = np.sqrt(i[0] ** 2 + i[1] ** 2)
+        theta = np.arctan2(i[1],i[0])
+        polar.append((r, theta))
+    #print(polar)
 
-    #return np.array([polar])
+    return np.array(polar)
 
 
 
@@ -41,6 +41,16 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
 
 
     return trouver_index
+
+
+
+#numero avec le graphique:
+#x = np.linspace(-1,1,250)
+#y = x**2 * math.sin(1/(x**2)) + x
+#plt.plot(x,y)
+#plt.show()
+
+
 
 
 if __name__ == '__main__':
