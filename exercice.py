@@ -4,7 +4,7 @@
 
 # TODO: Importez vos modules ici
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import math
 
 
@@ -45,18 +45,25 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
 
 
 #numero avec le graphique:
-#x = np.linspace(-1,1,250)
+x = np.linspace(-1,1,250)
 #y = x**2 * math.sin(1/(x**2)) + x
-#plt.plot(x,y)
-#plt.show()
 
 
+y = []
+for i in x:
+    if i == 0:
+        y.append(0)
+    else:
+        y.append(i ** 2 * math.sin(1 / (i ** 2)) + i)
+
+plt.plot(x,y)
+plt.show()
 
 
 if __name__ == '__main__':
     # TODO: Appelez vos fonctions ici
     print(linear_values())
-    print(coordinate_conversion())
+    print(coordinate_conversion(np.array([(0, 0), (10, 10), (2, -1)])))
     print(find_closest_index(values=np.array([1, 3, 8, 10]), number=9.5))
 
 
