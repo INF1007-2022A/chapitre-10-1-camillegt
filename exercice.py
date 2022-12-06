@@ -6,7 +6,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-
+import seaborn as sns
 
 
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
@@ -43,7 +43,6 @@ def find_closest_index(values: np.ndarray, number: float) -> int:
     return trouver_index
 
 
-
 #numero avec le graphique:
 x = np.linspace(-1,1,250)
 #y = x**2 * math.sin(1/(x**2)) + x
@@ -63,7 +62,7 @@ plt.show()
 #1. creer le cercle
 
 
-N = 100000 #nombre de points au total
+N = 2000  #nombre de points au total
 
 inside = []
 outside = []
@@ -72,24 +71,46 @@ for i in range(N):
     x = np.random.uniform(0, 1)
     y = np.random.uniform(0, 1)
 
-    if np.sqrt([np.power(x,2) + np.power(y,2)])[0] <= 1:
+    if np.sqrt([np.power(x,2) + np.power(y,2)])[0] < 1:
         inside.append((x,y))
-    else:
+    if np.sqrt([np.power(x, 2) + np.power(y, 2)])[0] == 1:
+        ligne.append((x,y))
+    if np.sqrt([np.power(x, 2) + np.power(y, 2)])[0] > 1:
         outside.append((x,y))
 
-Calcul_pi = 4 * (len(inside)/N)
+Calcul_pi = 4 * ((len(inside) + len(ligne))/N)
 
 print(f"Pi : {Calcul_pi}")
 
+#graphique
 
-
-
-
-
-plt.xlim(0,1)
-plt.ylim(0,1)
 plt.title("Calcul de pi par la méthode de Monte Carlo")
+plt.xlim(0, 1)
+plt.ylim(0, 1)
+
+plt.scatter(*zip(*inside), color="blue")
+plt.scatter(*zip(*outside), color="orange")
+#plt.plot(*zip(ligne), color="noir")
 plt.show()
+
+
+#x1, y1 = zip(*inside)
+#x2, y2 = zip(*outside)
+#x3, y3 = zip(*ligne)
+
+#plt.scatter(*(x1,y1), color = "red")
+#plt.scatter(*(x2,y2), color = "blue")
+#plt.scatter(*(x3,y3), color = "green")
+
+
+#x2, y2 = zip(*outside)
+#x3, y3 = zip(*ligne)
+
+#plt.scatter((x1,y1), color="blue")
+#plt.scatter((x2,y2), color = "orange")
+#plt.plot(*zip(*ligne), color = "noir")
+
+
 
 
 
