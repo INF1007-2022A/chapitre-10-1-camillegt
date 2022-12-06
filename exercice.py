@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import random
 
 # TODO: Importez vos modules ici
 import numpy as np
@@ -58,6 +58,41 @@ for i in x:
 
 plt.plot(x,y)
 plt.show()
+
+#methode de monte carlo calcul de pi
+#1. creer le cercle
+
+
+N = 100000 #nombre de points au total
+
+inside = []
+outside = []
+ligne = []
+for i in range(N):
+    x = np.random.uniform(0, 1)
+    y = np.random.uniform(0, 1)
+
+    if np.sqrt([np.power(x,2) + np.power(y,2)])[0] <= 1:
+        inside.append((x,y))
+    else:
+        outside.append((x,y))
+
+Calcul_pi = 4 * (len(inside)/N)
+
+print(f"Pi : {Calcul_pi}")
+
+
+
+
+
+
+plt.xlim(0,1)
+plt.ylim(0,1)
+plt.title("Calcul de pi par la méthode de Monte Carlo")
+plt.show()
+
+
+
 
 
 if __name__ == '__main__':
