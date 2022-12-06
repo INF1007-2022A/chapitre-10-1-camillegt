@@ -7,6 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 import seaborn as sns
+import scipy.integrate as integrate
+
 
 
 # TODO: Définissez vos fonctions ici (il en manque quelques unes)
@@ -54,7 +56,7 @@ for i in x:
         y.append(0)
     else:
         y.append(i ** 2 * math.sin(1 / (i ** 2)) + i)
-
+plt.title("Exercice 4")
 plt.plot(x,y)
 plt.show()
 
@@ -93,22 +95,23 @@ plt.scatter(*zip(*outside), color="orange")
 #plt.plot(*zip(ligne), color="noir")
 plt.show()
 
+#Evaluer une integrale
+print("Evaluer une integrale")
 
-#x1, y1 = zip(*inside)
-#x2, y2 = zip(*outside)
-#x3, y3 = zip(*ligne)
+print(integrate.quad(lambda x: np.exp(-x**2), -np.inf, np.inf))
 
-#plt.scatter(*(x1,y1), color = "red")
-#plt.scatter(*(x2,y2), color = "blue")
-#plt.scatter(*(x3,y3), color = "green")
+print("graphique de l'integrale")
+x = np.linespace(-4,4,0,1000)
+#y = ([integrate.quad(lambda x: np.exp(-x**2)
+plt.plot(x,y)
+plt.show()
 
 
-#x2, y2 = zip(*outside)
-#x3, y3 = zip(*ligne)
 
-#plt.scatter((x1,y1), color="blue")
-#plt.scatter((x2,y2), color = "orange")
-#plt.plot(*zip(*ligne), color = "noir")
+
+
+
+
 
 
 
